@@ -1,0 +1,137 @@
+.experience-section {
+  background: var(--color-surface);
+  border-top: 1px solid var(--color-border-light);
+  border-bottom: 1px solid var(--color-border-light);
+}
+
+.experience-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.exp-card {
+  display: flex;
+  gap: 24px;
+  align-items: flex-start;
+  padding: 28px;
+}
+
+.exp-left {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.exp-icon {
+  width: 48px;
+  height: 48px;
+  background: var(--color-accent-bg);
+  border: 1px solid var(--color-accent-border);
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  transition: var(--transition);
+}
+
+.exp-card:hover .exp-icon {
+  background: var(--color-accent);
+  transform: scale(1.05);
+}
+
+.exp-line {
+  width: 2px;
+  flex: 1;
+  min-height: 16px;
+  background: linear-gradient(to bottom, var(--color-accent-border), transparent);
+  margin-top: 8px;
+  display: none;
+}
+
+.exp-body {
+  flex: 1;
+}
+
+.exp-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+  margin-bottom: 12px;
+  flex-wrap: wrap;
+}
+
+.exp-type {
+  margin-bottom: 8px;
+  display: inline-block;
+}
+
+.exp-role {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--color-text-primary);
+  margin-bottom: 2px;
+  margin-top: 6px;
+}
+
+.exp-org {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--color-accent);
+}
+
+.exp-institution {
+  font-size: 13px;
+  color: var(--color-text-muted);
+  margin-top: 2px;
+}
+
+.exp-period {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--color-accent);
+  background: var(--color-accent-bg);
+  padding: 6px 12px;
+  border-radius: var(--radius-full);
+  white-space: nowrap;
+  border: 1px solid var(--color-accent-border);
+  flex-shrink: 0;
+}
+
+.exp-desc {
+  font-size: 14px;
+  color: var(--color-text-secondary);
+  line-height: 1.7;
+  margin-bottom: 14px;
+}
+
+.exp-tags {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 640px) {
+  .exp-card {
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .exp-left {
+    flex-direction: row;
+  }
+
+  .exp-line {
+    display: none;
+  }
+
+  .exp-header {
+    flex-direction: column;
+  }
+}
