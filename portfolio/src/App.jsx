@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { HashRouter, Routes, Route, Navigate } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import DownloadFab from "./components/DownloadFab";
@@ -10,7 +10,7 @@ import CustomCursor from "./components/CustomCursor";
 
 function App() {
   return (
-    <BrowserRouter>
+    <HashRouter>
       {/* Global decorative & UX layers */}
       <ParticleBackground />
       <CustomCursor />
@@ -22,12 +22,15 @@ function App() {
             <Route path="/" element={<HomePage />} />
             <Route path="/portfolio" element={<PortfolioPage />} />
             <Route path="/skills" element={<SkillsPage />} />
+
+            {/* fallback → selalu ke home */}
+            <Route path="*" element={<Navigate to="/" />} />
           </Routes>
         </main>
         <Footer />
         <DownloadFab />
       </div>
-    </BrowserRouter>
+    </HashRouter>
   );
 }
 
