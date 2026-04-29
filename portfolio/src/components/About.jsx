@@ -3,7 +3,7 @@ import './About.css'
 
 const stats = [
   { value: '2024', label: 'Angkatan UNIB' },
-  { value: '2+', label: 'Sertifikat' },
+  { value: '3+', label: 'Sertifikat' },
   { value: '6+', label: 'Proyek' },
   { value: '3+', label: 'Organisasi' },
 ]

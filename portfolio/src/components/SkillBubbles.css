@@ -1,0 +1,221 @@
+/* =============================================
+   SKILL BUBBLES SECTION
+   ============================================= */
+
+.skill-bubbles-section {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(
+    180deg,
+    var(--color-bg) 0%,
+    var(--color-bg-alt) 100%
+  );
+}
+
+.skill-bubbles-section::before {
+  content: "";
+  position: absolute;
+  top: -100px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 700px;
+  height: 400px;
+  background: radial-gradient(
+    ellipse at center,
+    rgba(79, 70, 229, 0.07) 0%,
+    transparent 70%
+  );
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ---- Wrapper ---- */
+.bubbles-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  justify-content: center;
+  padding: 20px 0 40px;
+  position: relative;
+  z-index: 1;
+}
+
+/* ---- Individual Bubble ---- */
+.skill-bubble {
+  position: relative;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  padding: 18px 24px 16px;
+  min-width: 90px;
+
+  background: rgb(255, 255, 255);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1.5px solid rgba(255, 255, 255, 0.8);
+  border-radius: 50px;
+  box-shadow:
+    0 4px 24px rgba(0, 0, 0, 0.07),
+    0 1px 4px rgba(0, 0, 0, 0.04),
+    inset 0 1px 0 rgba(255, 255, 255, 0.95);
+
+  cursor: default;
+  user-select: none;
+  overflow: hidden;
+
+  /* Floating animation — plays immediately */
+  animation:
+    bubbleFloat var(--float-duration, 4s) ease-in-out infinite alternate,
+    bubbleFadeIn 0.6s ease backwards;
+  animation-delay: var(--delay, 0s), var(--delay, 0s);
+
+  transition:
+    transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1),
+    box-shadow 0.3s ease,
+    border-color 0.3s ease,
+    background 0.3s ease;
+}
+
+/* Subtle colored top-border accent on each bubble */
+.skill-bubble::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 10%;
+  right: 10%;
+  height: 2px;
+  border-radius: 0 0 4px 4px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--bubble-color),
+    transparent
+  );
+  opacity: 0.5;
+  transition: opacity 0.3s ease;
+}
+
+.skill-bubble::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(135deg, var(--bubble-color) 0%, transparent 60%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.skill-bubble:hover {
+  transform: translateY(-10px) scale(1.1);
+  border-color: var(--bubble-color);
+  box-shadow:
+    0 16px 48px rgba(0, 0, 0, 0.13),
+    0 0 0 3px color-mix(in srgb, var(--bubble-color) 20%, transparent),
+    0 0 32px color-mix(in srgb, var(--bubble-color) 30%, transparent);
+  background: rgba(255, 255, 255, 0.99);
+}
+
+.skill-bubble:hover::before {
+  opacity: 0.1;
+}
+
+.skill-bubble:hover::after {
+  opacity: 1;
+}
+
+.skill-bubble:active {
+  transform: translateY(-5px) scale(1.05);
+}
+
+/* ---- Icon ---- */
+.bubble-icon {
+  font-size: 28px;
+  line-height: 1;
+  filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.12));
+  transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+  position: relative;
+  z-index: 1;
+}
+
+.skill-bubble:hover .bubble-icon {
+  transform: scale(1.25) rotate(-8deg);
+}
+
+/* ---- Name ---- */
+.bubble-name {
+  font-size: 11.5px;
+  font-weight: 700;
+  color: var(--color-text-secondary);
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+  transition: color 0.3s ease;
+  position: relative;
+  z-index: 1;
+}
+
+.skill-bubble:hover .bubble-name {
+  color: var(--bubble-color);
+}
+
+/* ---- Glow overlay ---- */
+.bubble-glow {
+  position: absolute;
+  inset: -40%;
+  background: radial-gradient(
+    circle at center,
+    var(--bubble-color),
+    transparent 65%
+  );
+  opacity: 0;
+  border-radius: 50%;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+}
+
+.skill-bubble:hover .bubble-glow {
+  opacity: 0.15;
+}
+
+/* ---- Floating Animation ---- */
+@keyframes bubbleFloat {
+  0% {
+    transform: translateY(0px);
+  }
+  100% {
+    transform: translateY(var(--float-offset, -10px));
+  }
+}
+
+@keyframes bubbleFadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.6) translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+/* ---- Responsive ---- */
+@media (max-width: 600px) {
+  .bubbles-wrapper {
+    gap: 10px;
+    padding: 16px 0 32px;
+  }
+
+  .skill-bubble {
+    padding: 14px 16px 12px;
+    min-width: 78px;
+  }
+
+  .bubble-icon {
+    font-size: 22px;
+  }
+
+  .bubble-name {
+    font-size: 10px;
+  }
+}
